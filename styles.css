@@ -1,0 +1,635 @@
+html, body, .contenido-principal .gallery-container {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 16px; /* Added for consistent base font size */
+    scroll-behavior: smooth; /* Added for smooth scrolling */
+    overflow-y: scroll;
+    scrollbar-width: none;            /* Firefox */
+    -ms-overflow-style: none;         /* IE/Edge */
+}
+
+body::-webkit-scrollbar, .contenido-principal::-webkit-scrollbar, .gallery-container::-webkit-scrollbar {
+    display: none;  /* Chrome/Safari */
+} 
+
+@font-face {
+    font-family: 'ABCDailySlabMono-Light-Trial';
+    src: url('/Fonts/ABCDailySlabMono-Light-Trial.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes shake {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    25% { transform: translate(1px, 1px) rotate(2deg); }
+    50% { transform: translate(-1px, -1px) rotate(-2deg); }
+    75% { transform: translate(2px, -1px) rotate(3deg); }
+    100% { transform: translate(-1px, 1px) rotate(-2deg); }
+}
+
+body {
+    font-family: 'ABCDailySlabMono-Light-Trial';
+    background-color: #f2f2f2;
+}
+
+
+.body-home {
+    background-image: url(/images/background.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Mantiene el color del texto */
+}
+
+h3 {
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+}
+
+p {
+    font-size: 10px;
+    margin: 0;
+}
+
+/* Navbar home */
+.navbar-nav.flex-column .nav-link {
+    height: 20px !important;        /* ajusta a la altura que quieras */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: start !important;
+}
+
+  /* 3) Asegúrate de que el h3 no meta padding adicional */
+
+
+.navbar-brand-home h3 {
+    background-color: black;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.navbar-brand-home h3:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    animation: shake 0.3s infinite;
+}
+
+.nav-link-home.active h3 {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.nav-link-home h3 {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.nav-link-home h3:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    animation: shake 0.3s infinite;
+}
+
+/* Navbar */
+.navbar-brand h3 {
+    background-color: black;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.navbar-brand h3:hover {
+    background-color: #ff4031;
+    color: rgb(255, 255, 255);
+    animation: shake 0.3s infinite;
+}
+
+.nav-link.active h3 {
+    background-color: #05d76f;
+    color: rgb(255, 255, 255);
+}
+
+.nav-link h3 {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.nav-link h3:hover {
+    background-color: #ff4031;
+    color: rgb(255, 255, 255);
+    animation: shake 0.3s infinite;
+}
+
+/* Button shop y search */
+.button {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    gap: 5px;
+    z-index: 1000;
+}
+
+.btn-top {
+    display: inline-flex;           /* Se ajusta al contenido */
+    align-items: center;
+    justify-content: center;
+    padding: 2px 10px;
+    background-color: white; 
+    border: none;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px 1px #05d76f;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.btn-top img {
+    width: 15px;
+    height: 15px;
+}
+
+.btn-top:hover {
+    border-radius: 50%/50%;
+    animation: shake 0.4s infinite;
+}
+
+
+/* Popup Search */
+.popup-busqueda {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    z-index: 2000;
+    width: 90%;
+    max-width: 400px;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 1500;
+}
+
+
+/* Galery DESIGN */
+
+.design-scroll-wrapper {
+    position: fixed;         /* Fija el contenedor entre botones y navbar */
+    top: 150px;               /* espacio para los botones (ajusta si tus botones miden distinto) */
+    bottom: 80px;            /* espacio para el navbar inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 1200px;
+    overflow-y: auto;   /* Permite scroll vertical */
+    overflow-x: hidden; /* Oculta scroll horizontal */
+    box-sizing: border-box;
+
+    /* Oculta la scrollbar */
+    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+.design-scroll-wrapper::-webkit-scrollbar {
+    display: none;             /* Chrome/Safari/Edge */
+}
+
+.design-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 30px;  /* espacio uniforme de 10px entre filas y columnas */
+    column-gap: 5px;
+}
+
+.design-item {
+    align-self: end;
+    flex: 0 0 calc(12.5% - 15px); /* 8 por fila, restando el gap de 15px */
+    box-sizing: border-box;
+    text-align: center;
+    
+}
+
+.design-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 8px;
+}
+
+.design-item p {
+    font-size: 0.75rem;
+    font-weight: semi-bold;
+    line-height: 1.2;
+    margin: 0;
+    text-align: start;       /* Alineación izquierda */
+    min-height: 3em;       /* Fuerza 3 líneas de alto como mínimo */
+    display: flex;
+    align-items: flex-start; /* Alinea texto arriba si es una sola línea */
+}
+
+
+/* The .image-wrapper class is used to style the container for images, allowing hover effects and transitions.
+   It ensures the images are displayed properly and provides a smooth scaling effect on hover. */
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    height: auto;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.main-img {
+    position: relative;
+    z-index: 1;
+}
+
+.hover-img {
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    transform: translateX(-5%) translateY(50%); /*desde donde sale la imagen*/
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none; /* Evita que la imagen de hover interfiera con el mouse */
+}
+
+.image-wrapper:hover .hover-img {
+    opacity: 1;
+    transform: translateX(-5%) translateY(19%) scale(1.1);  /*ajusta la posición y escala de la imagen de hover*/
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+.image-wrapper:hover .main-img {
+    opacity: 1; /* Reduce la opacidad de la imagen principal al pasar el mouse */
+}
+
+/* ART, JOURNAL & ABOUT Sidebar fixed */
+.sidebar {
+    position: fixed;
+    width: 30%;
+    height: 100vh;
+    background-color: #f2f2f2;
+    overflow-y: auto;
+    border-right: 1px solid black;
+    box-sizing: border-box;
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;
+    display: flex;
+}
+.sidebar p {
+    padding-left: 20px;
+    padding-right: 35px;
+}
+
+/* Contenedor de iconos: fila centrada, con espacio uniforme */
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio uniforme entre iconos */
+    margin-left: 24px;
+    font-size: 11px;
+}
+
+.button-CTA {
+    margin-top: 10px;
+}
+
+/* Pequeña animación en hover para cada icono */
+.button-CTA:hover {
+    animation: shake 0.4s infinite;
+    color: #ff4031;
+}
+
+/*JOURNAL*/
+/* Contenedor de la galería a la derecha */
+.gallery-container {
+    position: fixed;
+    width: 70%;
+    top: 80px;
+    bottom: 80px;
+    right: 0;
+    padding: 1rem 1rem;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background: #f2f2f2;
+}
+
+  /* Masonry con CSS columns */
+.masonry {
+    column-count: 3;
+    column-gap: 1rem;
+    scrollbar-width: none;       /* Firefox */
+    -ms-overflow-style: none;    /* IE 10+ */
+}
+
+  /* Items del masonry */
+.masonry-item {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1rem;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block;
+}
+
+.masonry-item p {
+    margin: 0;
+    padding: .5rem;
+    font-size: .85rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* ABOUT*/
+.work-header {
+    margin-top: 80px;
+    width: 70%;
+    margin-left: 30%;
+    justify-content:flex-start;
+    display: flex;
+    border-top:1px solid black;
+    background-color: #f2f2f2;
+}
+
+.work-header h2 {
+    padding-left: 60px;
+    padding-right: 10px;
+}
+
+.main-container {
+    background-color: #000;
+    color: white;
+    width: 70%;
+    min-height: 100vh;
+    position: relative;
+    margin-left: 30%;
+    padding-bottom: 70px;
+    padding-left: 0px;
+    font-size: 14px;
+}
+
+.main-container {
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE/Edge */
+}
+
+.main-container::-webkit-scrollbar {
+    display: none;                  /* Chrome/Safari */
+}
+
+pre {
+    font-family: 'ABCDailySlabMono-Light-Trial';
+    white-space: pre-line;
+    font-size: 10px;
+    padding-left: 70px;
+    margin: 0;
+}
+
+.work-footer {
+    margin-bottom: 30px;
+    padding: 70px;
+    width: 100%;
+    justify-content:flex-start;
+    display: flex;
+    border-bottom: 1px solid white;
+    background-color: black;
+}
+
+/* DESIGN-PROYECTS*/
+.design-page .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.design-page .work-header h2 {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+}
+
+/*SHARE POPUP*/
+
+.share-button-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+#shareButton {
+    position:relative;
+    top: 40px;
+    right: -950px;
+    z-index: 1000;
+    background: #f2f2f2;
+    border: none;
+    padding: 0;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 0;
+    cursor: pointer;
+    animation: shake 0.8s infinite;
+}
+.share-popup {
+    position: absolute;
+    left: 400px;
+    top: 100px;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+    z-index: 999;
+    width: 220px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.share-popup img {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.share-popup img:hover {
+    transform: scale(1.2);
+}
+
+.share-popup a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    color:#000
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 767px) {
+
+    .nav-link {
+    display: inline-block;
+    }
+
+    .nav-link h3 {
+    background-color: black;
+    color: white;
+    padding: 0px;
+    margin: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    }
+
+    .navbar.fixed-bottom {
+        margin-bottom: 15px !important; /* o 0 si querés que esté más pegada */
+        margin-left: 20px !important; /* o 0 si querés que esté más pegada */
+    }
+
+    .navbar-nav.flex-column .nav-link h3 {
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+    }
+
+    .button {
+        margin-top: 20px !important; /* o 0 si querés que esté más pegada */
+        margin-right: 20px !important; /* o 0 si querés que esté más pegada */
+    }
+
+    h3 {
+        font-size: 13px; /* Ajusta el tamaño del texto en pantallas pequeñas */
+        padding: 0 !important; /* Elimina padding para que no se vea más grande */
+    }
+
+/* DESIGN*/
+    .design-item {
+    flex: 0 0 calc(50% - 15px); /* 2 por fila a ≤767px */
+    }
+
+      /* Mover la galería al 25% de la altura de la ventana */
+    .design-scroll-wrapper {
+    margin: 0vh auto 10vh; /* 25% hacia abajo, centrado horizontal */
+    top: 75px; /* Espacio para los botones */
+    }
+
+    /*JOURNAL*/
+      /* El sidebar deja de ser fixed y ocupa todo el ancho en la parte superior */
+    .sidebar {
+        position: static !important; /* Quita position: fixed */
+        top: auto !important;        /* Anula valores anteriores */
+        left: auto !important;       /* Anula valores anteriores */
+        width: 100% !important;
+        height: auto;      /* Ahora ocupa 100% de ancho */
+        padding: 0px 0px 25px;        /* Ajusta el padding a tu gusto */        /* Separación respecto al contenido que sigue */
+        box-shadow: none;            /* Opcional: elimina sombra si la tenías */
+        border-right: 0;
+    }
+    .work-header {
+        width: 100%;
+        margin: 0;
+        padding: 10px 15px; /* Ajusta el padding a tu gusto */
+    }
+    .work-header h2 {
+        padding-left: 20px;
+        padding-right: 10px;
+    }
+    .main-container {
+        width: 100%;
+        padding-bottom: 180px;
+        font-size: 14px;
+    }
+    pre {
+    font-family: 'ABCDailySlabMono-Light-Trial';
+    padding-left: 35px;
+    padding-right: 25px;
+    margin: 0;
+}
+    .work-footer {
+        margin-bottom: 90px;
+        padding-left: 35px;
+    }
+
+    /* La galería también deja de estar fixed y fluye tras el sidebar */
+    .gallery-container {
+        position: static !important; /* Quita position: fixed */
+        top: auto !important;        /* Anula valores anteriores */
+        left: auto !important;       /* Anula valores anteriores */
+        bottom: auto !important;     /* Anula valores anteriores */
+        width: 100% !important;      /* Ocupa todo el ancho disponible */
+        margin: 0;                   /* Elimina márgenes previos si los había */
+        padding: 1rem;               /* Ajusta el padding interno */
+    }
+    .masonry { column-count: 2; } /*  ART gallery Responsive: 2 columnas */
+    /*ABOUT*/
+    .social-buttons-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 8px; /* gap-2 en Bootstrap = 0.5rem ≈ 8px */
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    .design-page .work-header h2 {
+        position: static;
+        transform: none;
+        text-align: center;
+        width: 100%;
+        font-size: 21.54px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .design-item {
+     flex: 0 0 calc(25% - 10px); /* 4 por fila a ≤1024px */
+    }
+    .design-scroll-wrapper {
+    margin: 0vh auto 5vh; /* 25% hacia abajo, centrado horizontal */
+    top: 120px; /* Espacio para los botones */
+    }
+}
+
+@media (min-width: 1025px) {
+    .design-item {
+     flex: 0 0 calc(12.5% - 10px); /* 8 por fila a ≤1024px */
+    }
+}
+
+
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .sidebar { width: 30%; } /* Puedes ajustar la anchura del sidebar si quieres */
+    .gallery-container { left: 30%; }
+}

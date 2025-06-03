@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ART</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="p-0 m-0 border-0">
+
+    <!-- Buttons search y shop (igual que en design.html) -->
+    <div class="button mx-5 mt-4">
+        <button class="btn-top" onclick="mostrarPopup()">
+            <img src="/iconos/lupa.svg" alt="Search">
+        </button>
+        <button class="btn-top fw-semibold">SHOP</button>
+    </div>
+
+    <!-- Popup búsqueda -->
+    <div class="popup-overlay" onclick="cerrarPopup()"></div>
+    <div class="popup-busqueda" id="popupBusqueda">
+        <h5 class="mb-3">Buscar en el sitio</h5>
+        <input type="text" class="form-control" placeholder="Escribe tu búsqueda...">
+        <button class="btn btn-secondary mt-3" onclick="cerrarPopup()">Cerrar</button>
+    </div>
+
+    <!-- Sidebar fixed-left (30% width) -->
+    <aside class="sidebar p-lg-5">
+        <div class="mx-auto"> <!--this is to align all the sidebar-->
+            <div class="d-flex flex-row align-items-center pt-5 px-4 mb-3">
+                <h4 class="mb-0" style="margin-right: 10px;">ABOUT</h4>
+                <img src="/iconos/identification-card_1faaa.png" alt="Instagram" width="40">
+            </div>
+            <p class="about-text-full px-4 d-none d-md-block">
+                I am an artist and designer<br><br>
+                I work on the identities of my projects seeking outcomes that stem from processes and explorations rooted in the analog and the material, combined with digital experimentation.<br><br>
+                My practice crosses editorial design, illustration, branding, museography, graphic work, ceramics, and collaborative processes.<br><br>
+                I work with cultural institutions, independent brands, and projects that value time, experimentation, expression, and making.<br><br>
+                If any of this resonates with you, write to me. I’d love to hear from you.
+            </p>
+            <p class="about-text-short px-4 d-block d-md-none">
+                I'm an artist and designer exploring identities through analog, material, and digital processes.<br><br>
+                I partner with cultural institutions and projects that value time, experimentation, and making.<br><br>
+                Feel free to reach out.
+            </p>
+            <div class="social-buttons-wrapper mt-lg-3 mb-lg-3">
+                <div class="social-buttons">
+                    <a href="https://instagram.com" target="_blank" class="d-flex align-items-center gap-2 text-decoration-none">
+                        <img src="/iconos/camera-with-flash_1f4f8.png" alt="Instagram" width="20">
+                        <span class="button-CTA">INSTAGRAM</span>
+                    </a>
+                </div>
+                <div class="social-buttons">
+                    <a href="mailto:hola@designosestudio.com" class="d-flex align-items-center gap-2 text-decoration-none">
+                        <img src="/iconos/open-mailbox-with-raised-flag_1f4ec.png" alt="Email" width="20">
+                        <span class="button-CTA">MAIL</span>
+                    </a>
+                </div>
+                <div class="social-buttons">
+                    <a href="https://behance.net" class="d-flex align-items-center gap-2 text-decoration-none" target="_blank">
+                        <img src="/iconos/globe-with-meridians_1f310.png" alt="Behance" width="20">
+                        <span class="button-CTA">BEHANCE</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <!-- Navbar bottom (idéntico al de design.html) -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-bottom mx-5 mb-4 p-0">
+        <div class="container-fluid d-flex flex-column flex-md-row align-items-start p-0">
+            <a class="navbar-brand p-0" href="index.html"><h3>DANIELA OSORIO ROJAS</h3></a>
+            <ul class="navbar-nav flex-column justify-content-between flex-md-row mb-2 mb-md-0 w-50">
+            <li class="nav-item">
+                <a class="nav-link active p-0 m-0" href="art.html"><h3>ART</h3></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-0" href="design.html"><h3>DESIGN</h3></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-0" href="journal.html"><h3>JOURNAL</h3></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link p-0" href="about.html"><h3>ABOUT</h3></a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+<script>
+function mostrarPopup() {
+    document.getElementById('popupBusqueda').style.display = 'block';
+    document.querySelector('.popup-overlay').style.display = 'block';
+}
+
+function cerrarPopup() {
+    document.getElementById('popupBusqueda').style.display = 'none';
+    document.querySelector('.popup-overlay').style.display = 'none';
+}
+</script>
+</body>
+</html>
