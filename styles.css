@@ -16,7 +16,7 @@ body::-webkit-scrollbar, .contenido-principal::-webkit-scrollbar, .gallery-conta
 
 @font-face {
     font-family: 'ABCDailySlabMono-Light-Trial';
-    src: url('/Fonts/ABCDailySlabMono-Light-Trial.woff') format('woff');
+    src: url('Fonts/ABCDailySlabMono-Light-Trial.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
